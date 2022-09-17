@@ -1,0 +1,35 @@
+/*
+DROP TABLE IF EXISTS order_item;
+DROP TABLE IF EXISTS product;
+DROP TABLE IF EXISTS orders;
+DROP TABLE IF EXISTS users;
+*/
+CREATE TABLE IF NOT EXISTS product(
+ id                  BIGSERIAL PRIMARY KEY NOT NULL,
+ name                CHARACTER VARYING (80) NOT NULL,
+ created_at          DATE NOT null,
+ price               DECIMAL(10,2),
+ status	             CHARACTER VARYING (60),
+);
+
+CREATE TABLE IF NOT EXISTS users(
+ id                 BIGSERIAL PRIMARY KEY NOT NULL,
+ name               CHARACTER VARYING (100) NOT NULL,
+ last_name          CHARACTER VARYING (100) NOT NULL,
+ email              CHARACTER VARYING (100) NOT NULL,
+ password           CHARACTER VARYING (50) NOT null,
+);
+
+CREATE TABLE IF NOT EXISTS orders(
+id                 BIGSERIAL PRIMARY KEY NOT NULL,
+user_id			   BIGINT REFERENCES users(id),
+created_at		   DATE NOT NULL,
+status	           CHARACTER VARYING (60)
+);
+
+CREATE TABLE IF NOT EXISTS order_item(
+ id                 BIGSERIAL PRIMARY KEY NOT NULL,
+ orders_id 			BIGINT REFERENCES orders(id),
+ product_id			BIGINT REFERENCES books(id),
+ quantity			INT2 NOT NULL,
+);

@@ -1,0 +1,4 @@
+INSERT INTO users(name, last_name, email, password)
+VALUES ('Yauheni', 'Hlaholeu', 'jek94@gmail.com', 'Hash'),
+    ('Uladzislau', 'Solovev', 'sol44@yandex.by', 'Hash'),
+    ('Haliana', 'Sidoric', 'galina_sid@gmail.com', 'Hash');
