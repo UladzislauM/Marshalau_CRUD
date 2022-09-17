@@ -2,10 +2,14 @@ package com.company.service.impl;
 
 import com.company.data.entity.Order_item;
 import com.company.service.OrderItemService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service("orderItemService")
+@RequiredArgsConstructor
 public class OrderItemServiceImpl implements OrderItemService {
+    private final OrderItemService orderItemService;
     @Override
     public List<Order_item> findAll() {
         return null;
@@ -23,8 +27,8 @@ public class OrderItemServiceImpl implements OrderItemService {
 
     @Override
     public Order_item create(Order_item order_item) {
-        order_item.setProduct();
-        return null;
+        orderItemService.create(order_item);
+        return order_item;
     }
 
     @Override
